@@ -13,4 +13,6 @@ steps:
       - docker compose up -d
     when:
       branch: master
-      event: push
+      event:
+        - push
+        - manual
