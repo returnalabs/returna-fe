@@ -8,9 +8,8 @@ steps:
       - /home/returna/.ssh:/root/.ssh:ro
       - /home/returna/.gitconfig:/root/.gitconfig:ro
     commands:
-      - git config --global --add safe.directory /var/www/returna-fe
       - cd /var/www/returna-fe
-      - git pull origin master
+      - git -c safe.directory=/var/www/returna-fe pull origin master
       - docker build -t returna-fe:latest .
       - docker compose down
       - docker compose up -d
