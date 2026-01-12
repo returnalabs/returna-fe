@@ -5,6 +5,8 @@ steps:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/www/returna-fe:/var/www/returna-fe
+      - /home/returna/.ssh:/root/.ssh:ro
+      - /home/returna/.gitconfig:/root/.gitconfig:ro
     commands:
       - git config --global --add safe.directory /var/www/returna-fe
       - cd /var/www/returna-fe
