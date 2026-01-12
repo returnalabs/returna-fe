@@ -1,0 +1,14 @@
+pipeline:
+  deploy:
+    image: docker:26
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/www/returna-fe:/var/www/returna-fe
+    commands:
+      - cd /var/www/returna-fe
+      - docker build -t returna-fe:latest .
+      - docker compose down
+      - docker compose up -d
+    when:
+      branch: master
+      event: push
